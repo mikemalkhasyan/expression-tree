@@ -14,6 +14,19 @@ class Node extends NodeBase {
         this.right = right;
     }
 
+    // Calculate the summary of the given nodes
+    summary() {
+        if (
+            null !== this.operator &&
+            this.supportedOperators.has(this.operator)
+        ) {
+            const operatorFunc = this.supportedOperators.get(this.operator);
+            return operatorFunc(this.left.summary(), this.right.summary());
+        }
+
+        return this.value;
+    }
+
     // In old version this method called as toString() that is not correct ->
     // because it's javascript objects core method name, that might cause serious bugs going forward
     // So, I renamed it to be called as 'toLabel'
