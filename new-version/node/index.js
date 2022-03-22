@@ -1,12 +1,12 @@
 const NodeBase = require('./base');
 
 class Node extends NodeBase {
-    constructor(
+    constructor({
         operator = null,
-        value,
-        left,
-        right
-    ) {
+        value = "",
+        left = null,
+        right = null
+    }) {
         super()
         this.operator = operator;
         this.value = value;
